@@ -1,11 +1,12 @@
 pkgbase = mosh-git
 	pkgdesc = Mobile shell, surviving disconnects with local echo and line editing, development version
-	pkgver = 20191002
+	pkgver = 1.4.0.r19.g1105d48
 	pkgrel = 1
-	url = http://mosh.mit.edu/
+	url = https://mosh.org
 	arch = i686
 	arch = x86_64
 	arch = arm
+	arch = aarch64
 	license = GPL3
 	makedepends = git
 	depends = protobuf
@@ -13,12 +14,10 @@ pkgbase = mosh-git
 	depends = zlib
 	depends = openssh
 	depends = perl
-	depends = perl-io-tty
 	depends = libutempter
-	optdepends = perl-io-socket-ip: for IPv6 support
+	provides = mosh
 	conflicts = mosh
 	source = git+https://github.com/mobile-shell/mosh.git
-	md5sums = SKIP
+	b2sums = SKIP
 
 pkgname = mosh-git
-

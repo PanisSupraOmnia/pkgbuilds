@@ -2,32 +2,33 @@
 # Maintainer: ava1ar <mail(at)ava1ar(dot)me>
 
 pkgname=mosh-git
-pkgver=20191002
+pkgver=1.4.0.r19.g1105d48
 pkgrel=1
 pkgdesc="Mobile shell, surviving disconnects with local echo and line editing, development version"
-arch=('i686' 'x86_64' 'arm')
-url="http://mosh.mit.edu/"
+arch=('i686' 'x86_64' 'arm' 'aarch64')
+url="https://mosh.org"
 license=('GPL3')
-depends=('protobuf' 'ncurses' 'zlib' 'openssh' 'perl' 'perl-io-tty' 'libutempter')
+depends=('protobuf' 'ncurses' 'zlib' 'openssh' 'perl' 'libutempter')
 makedepends=('git')
-optdepends=('perl-io-socket-ip: for IPv6 support')
-conflicts=('mosh')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 source=('git+https://github.com/mobile-shell/mosh.git')
-md5sums=('SKIP')
+b2sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/mosh"
-  git log -1 --format="%cd" --date=short | sed 's|-||g'
+  cd "${pkgname%-git}"
+  git describe --long --tags | sed 's/^mosh-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "${srcdir}/mosh"
+  cd "${pkgname%-git}"
   ./autogen.sh
-  ./configure --prefix=/usr
+  ./configure --enable-ufw --prefix=/usr --sysconfdir=/etc
   make
 }
 
 package() {
-  cd "${srcdir}/mosh"
-  make DESTDIR="${pkgdir}" install
+  DESTDIR="$pkgdir" make -C ${pkgname%-git} install
+  install -Dm644 "${pkgname%-git}/conf/bash-completion/completions/${pkgname%-git}" \
+    "$pkgdir/usr/share/bash-completion/completions/${pkgname%-git}"
 }
