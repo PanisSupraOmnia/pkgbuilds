@@ -2,6 +2,7 @@
 # Maintainer: ava1ar <mail(at)ava1ar(dot)me>
 
 pkgname=mosh-git
+epoch=1
 pkgver=1.4.0.r19.g1105d48
 pkgrel=1
 pkgdesc="Mobile shell, surviving disconnects with local echo and line editing, development version"
