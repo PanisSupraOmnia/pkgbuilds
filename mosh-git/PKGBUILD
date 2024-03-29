@@ -4,12 +4,12 @@
 pkgname=mosh-git
 epoch=1
 pkgver=1.4.0.r19.g1105d48
-pkgrel=1
+pkgrel=2
 pkgdesc="Mobile shell, surviving disconnects with local echo and line editing, development version"
 arch=('i686' 'x86_64' 'arm' 'aarch64')
 url="https://mosh.org"
-license=('GPL3')
-depends=('protobuf' 'ncurses' 'zlib' 'openssh' 'perl' 'libutempter')
+license=('GPL-3.0-or-later')
+depends=('abseil-cpp' 'gcc-libs' 'glibc' 'libutempter' 'ncurses' 'openssh' 'openssl' 'perl' 'protobuf' 'zlib')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
