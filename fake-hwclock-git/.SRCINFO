@@ -1,0 +1,14 @@
+pkgbase = fake-hwclock-git
+	pkgdesc = Save/restore system clock on machines without working RTC hardware.
+	pkgver = 0.1b.r21.g5b8105b
+	pkgrel = 1
+	url = https://github.com/xanmanning/alarm-fake-hwclock
+	arch = x86_64
+	license = LicenseRef-Coffeeware
+	makedepends = git
+	depends = glibc
+	conflicts = fake-hwclock
+	source = fake-hwclock-git::git+https://github.com/xanmanning/alarm-fake-hwclock.git
+	sha512sums = SKIP
+
+pkgname = fake-hwclock-git
